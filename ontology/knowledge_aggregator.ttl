@@ -1,0 +1,197 @@
+# ============================================================
+# Онтология «Агрегатор знаний»
+# Московский Политехнический Университет, 2025
+# OWL 2 / Turtle format — совместима с Protégé 5.x
+# ============================================================
+
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc:     <http://purl.org/dc/elements/1.1/> .
+@prefix schema: <https://schema.org/> .
+@prefix edu:    <http://knowledge-aggregator.loc/ontology#> .
+
+# ────────────────────────────────────────────────────────────
+# ОПИСАНИЕ ОНТОЛОГИИ
+# ────────────────────────────────────────────────────────────
+
+<http://knowledge-aggregator.loc/ontology>
+    a owl:Ontology ;
+    rdfs:label "Онтология Агрегатора знаний"@ru ;
+    rdfs:label "Knowledge Aggregator Ontology"@en ;
+    rdfs:comment """OWL 2 онтология информационной системы агрегации метаданных
+                    верифицированных научно-образовательных ресурсов.
+                    Используется для интеграции данных из разнородных источников
+                    (КиберЛенинка, РИНЦ, музейные коллекции) в едином семантическом пространстве."""@ru ;
+    owl:versionInfo "1.0.0" .
+
+# ────────────────────────────────────────────────────────────
+# КЛАССЫ (5 основных + 5 специализированных подклассов)
+# ────────────────────────────────────────────────────────────
+
+# --- Основной класс: Объект знаний ---
+
+edu:KnowledgeResource
+    a owl:Class ;
+    rdfs:label "Объект знаний"@ru, "Knowledge Resource"@en ;
+    rdfs:comment """Верифицированный научно-образовательный ресурс,
+                    агрегированный из внешнего источника.
+                    Суперкласс для всех типов образовательных материалов."""@ru .
+
+# Специализированные подклассы (типы контента)
+
+edu:Article
+    a owl:Class ;
+    rdfs:label "Статья"@ru, "Article"@en ;
+    rdfs:subClassOf edu:KnowledgeResource ;
+    rdfs:comment "Научная или образовательная статья из периодического издания или репозитория."@ru .
+
+edu:Book
+    a owl:Class ;
+    rdfs:label "Книга"@ru, "Book"@en ;
+    rdfs:subClassOf edu:KnowledgeResource ;
+    rdfs:comment "Книга, монография или учебное пособие."@ru .
+
+edu:Course
+    a owl:Class ;
+    rdfs:label "Курс"@ru, "Course"@en ;
+    rdfs:subClassOf edu:KnowledgeResource ;
+    rdfs:comment "Образовательный онлайн-курс или учебная программа."@ru .
+
+edu:Video
+    a owl:Class ;
+    rdfs:label "Видеоматериал"@ru, "Video"@en ;
+    rdfs:subClassOf edu:KnowledgeResource ;
+    rdfs:comment "Видеолекция, видеоурок или обучающее видео."@ru .
+
+edu:Documentation
+    a owl:Class ;
+    rdfs:label "Документация"@ru, "Documentation"@en ;
+    rdfs:subClassOf edu:KnowledgeResource ;
+    rdfs:comment "Техническая документация, нормативный документ или методическое пособие."@ru .
+
+# --- Источник данных ---
+
+edu:Source
+    a owl:Class ;
+    rdfs:label "Источник данных"@ru, "Data Source"@en ;
+    rdfs:comment """Платформа, репозиторий или API, предоставляющий метаданные для агрегации.
+                    Примеры: КиберЛенинка, РИНЦ, Europeana."""@ru .
+
+# --- Автор ---
+
+edu:Author
+    a owl:Class ;
+    rdfs:label "Автор"@ru, "Author"@en ;
+    rdfs:comment "Автор или составитель научно-образовательного материала."@ru .
+
+# --- Тематический тег ---
+
+edu:Tag
+    a owl:Class ;
+    rdfs:label "Тег"@ru, "Tag"@en ;
+    rdfs:comment "Тематическая категория или ключевое слово для классификации ресурса."@ru .
+
+# --- Пользователь системы ---
+
+edu:User
+    a owl:Class ;
+    rdfs:label "Пользователь системы"@ru, "System User"@en ;
+    rdfs:comment """Зарегистрированный пользователь информационной системы.
+                    Может иметь роль: user (исследователь) или admin (администратор)."""@ru .
+
+# ────────────────────────────────────────────────────────────
+# СВОЙСТВА ОБЪЕКТОВ (Object Properties)
+# ────────────────────────────────────────────────────────────
+
+edu:fromSource
+    a owl:ObjectProperty ;
+    rdfs:label "агрегирован из источника"@ru, "aggregated from source"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range edu:Source ;
+    rdfs:comment "Связывает ресурс с платформой-источником, из которой он был агрегирован."@ru .
+
+edu:hasTag
+    a owl:ObjectProperty ;
+    rdfs:label "имеет тег"@ru, "has tag"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range edu:Tag ;
+    rdfs:comment "Связывает ресурс с тематическим тегом или ключевым словом."@ru .
+
+edu:hasAuthor
+    a owl:ObjectProperty ;
+    rdfs:label "имеет автора"@ru, "has author"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range edu:Author ;
+    rdfs:comment "Связывает ресурс с его автором как отдельной сущностью."@ru .
+
+edu:savedBy
+    a owl:ObjectProperty ;
+    rdfs:label "сохранён пользователем"@ru, "saved by user"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range edu:User ;
+    rdfs:comment "Указывает, что пользователь добавил ресурс в закладки."@ru .
+
+# ────────────────────────────────────────────────────────────
+# СВОЙСТВА ДАННЫХ (Datatype Properties)
+# ────────────────────────────────────────────────────────────
+
+# Основные метаданные используют стандарты Dublin Core:
+#   dc:title       — название ресурса
+#   dc:creator     — имя автора (строка)
+#   dc:date        — дата публикации
+#   dc:description — аннотация / описание
+#   dc:identifier  — внешний идентификатор (DOI, ISBN, OAI)
+#   dc:publisher   — издательство / платформа-источник
+#
+# Для URL первоисточника используется: schema:url
+
+edu:contentType
+    a owl:DatatypeProperty ;
+    rdfs:label "тип контента"@ru, "content type"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Тип ресурса: article | book | course | video | documentation."@ru .
+
+edu:verificationStatus
+    a owl:DatatypeProperty ;
+    rdfs:label "статус верификации"@ru, "verification status"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Статус модерации ресурса в системе: pending | approved | rejected."@ru .
+
+edu:inLanguage
+    a owl:DatatypeProperty ;
+    rdfs:label "язык ресурса"@ru, "resource language"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Язык материала в формате ISO 639-1: ru | en."@ru .
+
+edu:externalId
+    a owl:DatatypeProperty ;
+    rdfs:label "внешний идентификатор"@ru, "external identifier"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Идентификатор во внешней системе: DOI, ISBN, arXiv ID, OAI-PMH identifier."@ru .
+
+edu:viewCount
+    a owl:DatatypeProperty ;
+    rdfs:label "количество просмотров"@ru, "view count"@en ;
+    rdfs:domain edu:KnowledgeResource ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Счётчик просмотров ресурса в системе."@ru .
+
+edu:sourceType
+    a owl:DatatypeProperty ;
+    rdfs:label "тип источника"@ru, "source type"@en ;
+    rdfs:domain edu:Source ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Протокол доступа к источнику: api | oai-pmh | scraper."@ru .
+
+edu:userRole
+    a owl:DatatypeProperty ;
+    rdfs:label "роль пользователя"@ru, "user role"@en ;
+    rdfs:domain edu:User ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Роль пользователя в системе: user | admin."@ru .

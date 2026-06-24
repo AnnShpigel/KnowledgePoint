@@ -1,0 +1,271 @@
+.cg-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.cg-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cg-card {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+}
+
+.cg-card.clickable {
+  cursor: pointer;
+}
+
+.cg-card.clickable:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Stretched link — покрывает всю карточку, кнопки/ссылки поверх через z-index */
+.cg-stretched-link {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.cg-actions-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.cg-card.clickable:hover .cg-title,
+.cg-list-card.clickable:hover .cg-title {
+  color: #4F46E5;
+}
+
+.cg-list-card {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 1.25rem;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.cg-list-card.clickable {
+  cursor: pointer;
+}
+
+.cg-list-card.clickable:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.cg-list-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.cg-list-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.cg-badge-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.cg-type-badge {
+  padding: 0.25rem 0.75rem;
+  background: #EEF2FF;
+  color: #4F46E5;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Manrope', sans-serif;
+  flex-shrink: 0;
+}
+
+.cg-source-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #0D9488;
+  font-weight: 500;
+  font-family: 'Manrope', sans-serif;
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cg-title {
+  font-family: 'Merriweather', serif;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.cg-meta {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem;
+  color: #64748B;
+  margin-bottom: 0.75rem;
+}
+
+.cg-desc {
+  font-family: 'Merriweather', serif;
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cg-desc.list-clamp {
+  -webkit-line-clamp: 2;
+}
+
+.cg-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid #F1F5F9;
+  margin-top: auto;
+}
+
+.cg-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cg-ext-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #F1F5F9;
+  border-radius: 0.375rem;
+  color: #374151;
+  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cg-source-link {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.5rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.cg-source-link:hover {
+  background: #F9FAFB;
+}
+
+.cg-bookmark-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cg-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.cg-pagination-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.75rem;
+  background: white;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cg-pagination-btn:hover:not(:disabled) {
+  background: #F9FAFB;
+}
+
+.cg-pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cg-pagination-info {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem;
+  color: #64748B;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .cg-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cg-list-card {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cg-list-aside {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cg-card,
+  .cg-list-card {
+    padding: 1rem;
+  }
+}

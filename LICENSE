@@ -1,0 +1,24 @@
+Copyright (c) 2026 Анна Гершпигель. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted PROVIDED THAT THE FOLLOWING CONDITIONS ARE MET:
+
+1. This software, including its source code, architecture, and UI/UX designs, 
+   is the exclusive property of the author.
+2. Access to this private repository is granted strictly for evaluation 
+   and portfolio review purposes.
+3. You MAY NOT copy, modify, distribute, sublicense, or create derivative 
+   works based on this software.
+4. You MAY NOT use any part of this code (including architectural patterns, 
+   SPARQL queries, or React components) in commercial or open-source projects 
+   without explicit written permission from the copyright holder.
+5. Forking or downloading the repository for purposes other than local 
+   evaluation is prohibited.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
